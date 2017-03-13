@@ -28,11 +28,11 @@ CFLAGS += -pthread
 
 SOURCE_FILES = main.c lib/clargs.c lib/aff.c bench_pthreads.c
 
-all: x.main.int.rcu_htm x.main.avl.int.rcu_htm
+all: x.rbt.int.rcu_htm x.avl.int.rcu_htm
 
-x.main.int.rcu_htm: $(SOURCE_FILES) rbt/rbt_links_bu_int_rcu_htm.c
+x.rbt.int.rcu_htm: $(SOURCE_FILES) rbt-rcu-htm-internal.c
 	$(CC) $(CFLAGS) $^ -o $@
-x.main.avl.int.rcu_htm: $(SOURCE_FILES) avl/avl-rcu-htm-internal.c
+x.avl.int.rcu_htm: $(SOURCE_FILES) avl-rcu-htm-internal.c
 	$(CC) $(CFLAGS) $^ -o $@
 
 clean:

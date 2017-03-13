@@ -10,7 +10,7 @@
 #include "alloc.h"
 #include "aff.h"
 #include "clargs.h"
-#include "rbt/iface.h"
+#include "dict-iface.h"
 #include "timers_lib.h"
 #include "arch.h"
 

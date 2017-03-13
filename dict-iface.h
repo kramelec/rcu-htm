@@ -1,5 +1,5 @@
-#ifndef _RBT_IFACE_H_
-#define _RBT_IFACE_H_
+#ifndef _DICT_IFACE_H_
+#define _DICT_IFACE_H_
 
 //> Not thread-safe interface functions.
 //> Should only be called during initialization and termination phase
@@ -28,4 +28,4 @@ int rbt_delete(void *rbt, void *thread_data, int key);
 
 int rbt_print(void *rbt);
 
-#endif /* _RBT_IFACE_H_ */
+#endif /* _DICT_IFACE_H_ */
