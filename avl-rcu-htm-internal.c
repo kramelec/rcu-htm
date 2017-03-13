@@ -155,12 +155,7 @@ typedef struct avl_node_s {
 
 	struct avl_node_s *left,
 	                  *right;
-
-//	char padding[CACHE_LINE_SIZE - 2 * sizeof(int) - sizeof(void *) -
-//	             2 * sizeof(struct node_s *)];
-//} __attribute__((packed)) __attribute__((aligned(CACHE_LINE_SIZE))) avl_node_t;
 } __attribute__((packed)) avl_node_t;
-//} __attribute__((aligned(CACHE_LINE_SIZE))) avl_node_t;
 
 typedef struct {
 	avl_node_t *root;
@@ -490,7 +485,6 @@ try_from_scratch:
 	if (++retries >= TX_NUM_RETRIES) {
 		tdata->lacqs++;
 		pthread_spin_lock(&avl->avl_lock);
-//		volatile int j; for (j=0; j < 10000000; j++) ; // XXX DEBUG
 		_traverse_with_stack(avl, key, node_stack, &stack_top);
 		if (stack_top >= 0 && node_stack[stack_top]->key == key) {
 			pthread_spin_unlock(&avl->avl_lock);
@@ -827,7 +821,6 @@ try_from_scratch:
 	if (++retries >= TX_NUM_RETRIES) {
 		tdata->lacqs++;
 		pthread_spin_lock(&avl->avl_lock);
-//		volatile int j; for (j=0; j < 10000000; j++) ; // XXX DEBUG
 		_traverse_with_stack(avl, key, node_stack, &stack_top);
 		if (stack_top >= 0 && node_stack[stack_top]->key != key) {
 			pthread_spin_unlock(&avl->avl_lock);

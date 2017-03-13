@@ -153,12 +153,7 @@ typedef struct rbt_node {
 	int key;
 	void *data;
 	struct rbt_node *left, *right;
-
-//	char padding[CACHE_LINE_SIZE - sizeof(color_t) - sizeof(int) -
-//	             sizeof(void *) - 2 * sizeof(struct rbt_node *)];
-//} __attribute__((aligned(CACHE_LINE_SIZE))) rbt_node_t;
 } __attribute__((packed)) rbt_node_t;
-//} __attribute__((aligned(CACHE_LINE_SIZE))) rbt_node_t;
 
 typedef struct {
 	rbt_node_t *root;
@@ -201,7 +196,6 @@ static void rbt_node_copy(rbt_node_t *dest, rbt_node_t *src, tdata_t *tdata)
 
 static rbt_node_t *rbt_node_new_copy(rbt_node_t *src, tdata_t *tdata)
 {
-//	rbt_node_t *node = rbt_node_new(0, BLACK, NULL);
 	rbt_node_t *node = &per_thread_node_allocators[tdata->tid][tdata->next_node_to_allocate++];
 	rbt_node_copy(node, src, tdata);
 	return node;
@@ -1392,7 +1386,6 @@ int rbt_validate(void *rbt)
 {
 	int ret = 0;
 	ret = _rbt_validate_helper(((rbt_t *)rbt)->root);
-//	rbt_print_struct(rbt);
 	return ret;
 }
 
@@ -1406,5 +1399,5 @@ int rbt_warmup(void *rbt, int nr_nodes, int max_key,
 
 char *rbt_name()
 {
-	return "links_bu_rcu_htm_internal";
+	return "rbt-rcu-htm-internal";
 }
