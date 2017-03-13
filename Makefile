@@ -36,4 +36,4 @@ x.avl.int.rcu_htm: $(SOURCE_FILES) avl-rcu-htm-internal.c
 	$(CC) $(CFLAGS) $^ -o $@
 
 clean:
-	rm -f x.main*
+	rm -f x.*
